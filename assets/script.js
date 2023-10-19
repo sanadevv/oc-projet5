@@ -27,19 +27,28 @@ let currentSlideIndex = 0;
 
 // clique droit
 arrowRight.addEventListener("click", () => {
-  currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+  if (currentSlideIndex === slides.length - 1) {
+    currentSlideIndex = 0;
+  } else {
+    currentSlideIndex++;
+  }
+
   updateBanner();
   updateDot();
 });
 
 // clique gauche
 arrowLeft.addEventListener("click", () => {
-  currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+  if (currentSlideIndex === 0) {
+    currentSlideIndex = slides.length - 1;
+  } else {
+    currentSlideIndex--;
+  }
   updateBanner();
   updateDot();
 });
 
-// fonction pour mettre à jour les bullet points
+// fonction pour créer et mettre à jour les bullet points
 function updateDot() {
   dotsContainer.innerHTML = "";
 
